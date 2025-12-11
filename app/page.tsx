@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
@@ -34,17 +35,17 @@ export default function Home() {
       {/* Floating Navigation */}
       <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[calc(100%-2rem)] sm:max-w-none">
         <div className="flex items-center justify-center gap-3 sm:gap-6 bg-background/95 backdrop-blur-sm border border-border rounded-full px-9 py-3 sm:px-8 sm:py-2 shadow-lg">
-          <Button
-            variant="default"
-            size="default"
-            className="text-xs sm:text-sm px-2 sm:px-4 h-8 sm:h-9"
-            asChild
+          <a
+            href="mailto:info@snxlabs.de?subject=Kontaktanfrage&body=Hallo%20SNX%20Labs%2C%0D%0A%0D%0A"
+            className={cn(
+              buttonVariants({ variant: "default", size: "default" }),
+              "text-xs sm:text-sm px-2 sm:px-4 h-8 sm:h-9 no-underline cursor-pointer relative z-10"
+            )}
+            style={{ pointerEvents: "auto" }}
           >
-            <a href="mailto:info@snxlabs.de">
-              <span className="hidden sm:inline">Kontaktiere uns</span>
-              <span className="sm:hidden">Kontakt</span>
-            </a>
-          </Button>
+            <span className="hidden sm:inline">Kontaktiere uns</span>
+            <span className="sm:hidden">Kontakt</span>
+          </a>
           <div className="h-4 w-px bg-border" />
           <button
             onClick={() => setIsImpressumOpen(true)}
@@ -90,7 +91,7 @@ export default function Home() {
               <p>
                 E-Mail:{" "}
                 <a
-                  href="mailto:info@snxlabs.de"
+                  href="mailto:info@snxlabs.de?subject=Kontaktanfrage%20von%20SNX%20Labs%20Website&body=Hallo%20SNX%20Labs%2C%0D%0A%0D%0A"
                   className="underline hover:text-foreground/80"
                 >
                   info@snxlabs.de
