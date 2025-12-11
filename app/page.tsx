@@ -16,14 +16,14 @@ export default function Home() {
   return (
     <>
       <div
-        className="min-h-screen p-3 sm:p-6"
+        className="h-screen overflow-hidden p-4 sm:p-6 sm:min-h-screen"
         style={{ backgroundColor: "#F4F3EF" }}
       >
         <div
           style={{ width: "70%", maxWidth: "none" }}
           className="w-full sm:w-[70%]"
         >
-          <p className="font-normal leading-tight tracking-tight text-foreground text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.8rem]">
+          <p className="font-semibold sm:font-normal leading-tight tracking-tight text-foreground text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.8rem]">
             Hey! Wir verbinden Beratung, Technologie und KI zu Lösungen, die
             wirken. Hinter den Kulissen entsteht gerade ein neues Kapitel – ein
             Ort, an dem sich Erfahrung, Technologie und neue Ideen treffen.
@@ -32,30 +32,33 @@ export default function Home() {
       </div>
 
       {/* Floating Navigation */}
-      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] sm:w-auto">
-        <div className="flex items-center justify-center gap-3 sm:gap-6 bg-background/95 backdrop-blur-sm border border-border rounded-full px-4 py-2 sm:px-8 sm:py-3 shadow-lg">
+      <nav className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[calc(100%-2rem)] sm:max-w-none">
+        <div className="flex items-center justify-center gap-3 sm:gap-6 bg-background/95 backdrop-blur-sm border border-border rounded-full px-9 py-3 sm:px-8 sm:py-2 shadow-lg">
+          <Button
+            variant="default"
+            size="default"
+            className="text-xs sm:text-sm px-2 sm:px-4 h-8 sm:h-9"
+            asChild
+          >
+            <a href="mailto:info@snxlabs.de">
+              <span className="hidden sm:inline">Kontaktiere uns</span>
+              <span className="sm:hidden">Kontakt</span>
+            </a>
+          </Button>
+          <div className="h-4 w-px bg-border" />
           <button
             onClick={() => setIsImpressumOpen(true)}
             className="text-xs sm:text-sm text-foreground hover:text-foreground/80 transition-colors pb-0.5 whitespace-nowrap"
           >
             Impressum
           </button>
-          <div className="h-4 w-px bg-border" />
-          <Button
-            variant="default"
-            size="default"
-            className="text-xs sm:text-sm px-3 sm:px-4 h-8 sm:h-9"
-          >
-            <span className="hidden sm:inline">Kontaktiere uns</span>
-            <span className="sm:hidden">Kontakt</span>
-          </Button>
         </div>
       </nav>
 
       {/* Impressum Dialog */}
       <Dialog open={isImpressumOpen} onOpenChange={setIsImpressumOpen}>
         <DialogContent
-          className="max-w-2xl rounded-none border-2"
+          className="max-w-2xl rounded-none border-2 max-h-[90vh] overflow-y-auto"
           style={{ backgroundColor: "#F4F3EF" }}
         >
           <DialogHeader>
@@ -65,21 +68,33 @@ export default function Home() {
           </DialogHeader>
           <div className="space-y-4 text-sm text-foreground">
             <div>
+              <h3 className="font-semibold mb-2">Webseitenbetreiber</h3>
+              <p>Maximilian Scheffel</p>
+              <p>Thanh Nguyen</p>
+            </div>
+            <div>
               <h3 className="font-semibold mb-2">Angaben gemäß § 5 TMG</h3>
-              <p>snx labs</p>
+              <p className="font-semibold">
+                Scheffel, Maximilian; Nguyen, Thanh GbR als SNX Labs
+              </p>
               <p className="mt-2">
-                {/* Hier können Sie Ihre Adresse eintragen */}
-                Musterstraße 123
+                Gesellschaft bürgerlichen Rechts (GbR)
                 <br />
-                12345 Musterstadt
+                Kirchhöfnerstr. 17
+                <br />
+                30453 Hannover
               </p>
             </div>
             <div>
               <h3 className="font-semibold mb-2">Kontakt</h3>
               <p>
-                Telefon: {/* Ihre Telefonnummer */}
-                <br />
-                E-Mail: {/* Ihre E-Mail-Adresse */}
+                E-Mail:{" "}
+                <a
+                  href="mailto:info@snxlabs.de"
+                  className="underline hover:text-foreground/80"
+                >
+                  info@snxlabs.de
+                </a>
               </p>
             </div>
             <div>
@@ -87,9 +102,36 @@ export default function Home() {
                 Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
               </h3>
               <p>
-                {/* Ihr Name */}
+                Scheffel, Maximilian; Nguyen, Thanh GbR
                 <br />
-                {/* Ihre Adresse */}
+                Kirchhöfnerstr. 17
+                <br />
+                30453 Hannover
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">
+                Informationen zur Online-Streitbeilegung
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Die EU-Kommission hat eine Internetplattform zur
+                Online-Beilegung von Streitigkeiten (sog. OS-Plattform)
+                geschaffen. Die OS-Plattform dient als Anlaufstelle zur
+                außergerichtlichen Beilegung von Streitigkeiten betreffend
+                vertragliche Verpflichtungen, die aus Online-Kaufverträgen
+                erwachsen. Sie können die OS-Plattform unter dem folgenden Link
+                erreichen:{" "}
+                <a
+                  href="http://ec.europa.eu/consumers/odr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground/80"
+                >
+                  http://ec.europa.eu/consumers/odr
+                </a>
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Hinweis gemäß § 36 Verbraucherstreitbeilegungsgesetz (VSBG)
               </p>
             </div>
             <div>
@@ -126,7 +168,7 @@ export default function Home() {
       </Dialog>
 
       {/* Bottom Left Text */}
-      <div className="fixed bottom-4 sm:bottom-8 left-4 sm:left-8 z-50">
+      <div className="fixed bottom-20 sm:bottom-8 left-4 sm:left-8 z-40">
         <p className="text-xs sm:text-sm text-muted-foreground uppercase">
           currently in private
         </p>

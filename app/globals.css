@@ -116,7 +116,16 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html,
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  @media (max-width: 640px) {
+    html,
+    body {
+      overflow: hidden;
+      height: 100%;
+    }
   }
 }
