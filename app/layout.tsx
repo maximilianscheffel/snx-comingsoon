@@ -19,9 +19,9 @@ const cactusClassicalSerif = Cactus_Classical_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Telescope - Coming Soon",
+  title: "SNX Labs - Coming Soon",
   description:
-    "Telescope is a new platform to discover the best recommendations from the best curators.",
+    "SNX Labs.",
 };
 
 export default function RootLayout({
